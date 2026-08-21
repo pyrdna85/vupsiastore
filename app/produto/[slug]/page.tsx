@@ -1,3 +1,4 @@
+
 import prisma from '@/lib/prisma';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -5,7 +6,7 @@ import { notFound } from 'next/navigation';
 import { ChevronRight, Truck, Zap, ExternalLink } from 'lucide-react';
 import { ProductCard } from '@/components/products/ProductCard';
 
-export const dynamic = 'force-dynamic';
+
 
 export default async function ProductPage({
   params,
@@ -137,3 +138,5 @@ export default async function ProductPage({
     </div>
   );
 }
+
+export const dynamic = 'force-dynamic';

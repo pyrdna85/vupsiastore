@@ -1,15 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { getSession } from '@/lib/auth';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export const metadata: Metadata = {
-  title: 'VUPSIA - Ofertas e Achadinhos',
-  description: 'Encontre os melhores produtos com preços especiais.',
+  title: 'Vupsia - Achadinhos e Ofertas',
+  description: 'Os melhores achadinhos e ofertas da internet.',
 };
 
 export default async function RootLayout({
@@ -18,12 +15,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getSession();
-  
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans`} suppressHydrationWarning>
+      <body className="antialiased bg-neutral-50 min-h-screen flex flex-col">
         <Header initialSession={session} />
-        <main className="flex-grow flex flex-col">
+        <main className="flex-1 flex flex-col">
           {children}
         </main>
         <Footer />

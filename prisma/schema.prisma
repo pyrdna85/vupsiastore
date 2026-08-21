@@ -7,17 +7,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  USER
-  ADMIN
-}
 
 model User {
   id           String     @id @default(uuid())
   name         String
   email        String     @unique
   passwordHash String
-  role         Role       @default(USER)
+  role         String       @default("USER")
   active       Boolean    @default(true)
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
@@ -29,7 +25,7 @@ model Category {
   id          String    @id @default(uuid())
   name        String
   slug        String    @unique
-  description String?   @db.Text
+  description String?   
   icon        String?
   imageUrl    String?
   active      Boolean   @default(true)
@@ -42,14 +38,14 @@ model Product {
   id                 String         @id @default(uuid())
   name               String
   slug               String         @unique
-  description        String         @db.Text
-  shortDescription   String         @db.Text
+  description        String         
+  shortDescription   String         
   price              Float
   oldPrice           Float?
   discountPercentage Int?
   imageUrl           String
   store              String
-  affiliateUrl       String         @db.Text
+  affiliateUrl       String         
   active             Boolean        @default(true)
   featured           Boolean        @default(false)
   freeShipping       Boolean        @default(false)

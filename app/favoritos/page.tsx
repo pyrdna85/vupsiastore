@@ -1,9 +1,10 @@
+
 import { getSession } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 import { ProductCard } from '@/components/products/ProductCard';
 import { redirect } from 'next/navigation';
 
-export const dynamic = 'force-dynamic';
+
 
 export default async function FavoritesPage() {
   const session = await getSession();
@@ -43,3 +44,5 @@ export default async function FavoritesPage() {
     </div>
   );
 }
+
+export const dynamic = 'force-dynamic';

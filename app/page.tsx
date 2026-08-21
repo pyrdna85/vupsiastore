@@ -1,10 +1,11 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import prisma from '@/lib/prisma';
 import { ProductCard } from '@/components/products/ProductCard';
 import { LayoutGrid } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
+
 export const revalidate = 60; // Revalidate every minute
 
 export default async function Home() {
@@ -144,3 +145,5 @@ export default async function Home() {
     </div>
   );
 }
+
+export const dynamic = 'force-dynamic';

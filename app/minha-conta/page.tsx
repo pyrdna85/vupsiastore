@@ -1,8 +1,7 @@
 import { getSession } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 import { redirect } from 'next/navigation';
-
-export const dynamic = 'force-dynamic';
+import ProfileForm from './ProfileForm';
 
 export default async function AccountPage() {
   const session = await getSession();
@@ -26,15 +25,7 @@ export default async function AccountPage() {
         
         <div className="bg-white rounded-2xl p-8 border border-neutral-200 shadow-sm">
           <div className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-neutral-500 mb-1">Nome completo</label>
-              <p className="text-lg font-medium text-neutral-900">{user.name}</p>
-            </div>
-            
-            <div className="border-t border-neutral-100 pt-6">
-              <label className="block text-sm font-medium text-neutral-500 mb-1">Email</label>
-              <p className="text-lg font-medium text-neutral-900">{user.email}</p>
-            </div>
+            <ProfileForm user={{ name: user.name, email: user.email }} />
 
             <div className="border-t border-neutral-100 pt-6">
               <label className="block text-sm font-medium text-neutral-500 mb-1">Membro desde</label>

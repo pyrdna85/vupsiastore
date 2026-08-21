@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -32,7 +33,7 @@ export default function LoginPage() {
       if (data.user?.role === 'ADMIN') {
         window.location.href = '/admin';
       } else {
-        window.location.href = '/';
+        window.location.href = '/minha-conta';
       }
     } catch (err: any) {
       setError(err.message);

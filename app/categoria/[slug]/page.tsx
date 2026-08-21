@@ -1,8 +1,9 @@
+
 import prisma from '@/lib/prisma';
 import { ProductCard } from '@/components/products/ProductCard';
 import { notFound } from 'next/navigation';
 
-export const dynamic = 'force-dynamic';
+
 
 export default async function CategoryPage({
   params,
@@ -49,3 +50,5 @@ export default async function CategoryPage({
     </div>
   );
 }
+
+export const dynamic = 'force-dynamic';

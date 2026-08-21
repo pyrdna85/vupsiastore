@@ -1,7 +1,8 @@
+
 import prisma from '@/lib/prisma';
 import { ProductCard } from '@/components/products/ProductCard';
 
-export const dynamic = 'force-dynamic';
+
 
 export default async function SearchPage({
   searchParams,
@@ -56,3 +57,5 @@ export default async function SearchPage({
     </div>
   );
 }
+
+export const dynamic = 'force-dynamic';
