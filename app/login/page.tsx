@@ -29,7 +29,8 @@ export default function LoginPage() {
         throw new Error(data.error || 'Erro ao fazer login');
       }
 
-      router.push('/');
+      const redirectPath = data.user?.role === 'ADMIN' ? '/admin' : '/minha-conta';
+      router.push(redirectPath);
       router.refresh();
     } catch (err: any) {
       setError(err.message);
@@ -46,7 +47,7 @@ export default function LoginPage() {
         </h2>
         <p className="mt-2 text-center text-sm text-neutral-600">
           Ou{' '}
-          <Link href="/cadastro" className="font-medium text-blue-600 hover:text-blue-500 transition-colors">
+          <Link href="/cadastro" className="font-medium text-orange-600 hover:text-orange-500 transition-colors">
             crie uma nova conta gratuitamente
           </Link>
         </p>
@@ -70,7 +71,7 @@ export default function LoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2.5 border border-neutral-300 rounded-xl shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all"
+                  className="appearance-none block w-full px-3 py-2.5 border border-neutral-300 rounded-xl shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 sm:text-sm transition-all"
                 />
               </div>
             </div>
@@ -85,7 +86,7 @@ export default function LoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2.5 border border-neutral-300 rounded-xl shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all"
+                  className="appearance-none block w-full px-3 py-2.5 border border-neutral-300 rounded-xl shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 sm:text-sm transition-all"
                 />
               </div>
             </div>
@@ -94,7 +95,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-70"
+                className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors disabled:opacity-70"
               >
                 {loading ? 'Entrando...' : 'Entrar'}
               </button>

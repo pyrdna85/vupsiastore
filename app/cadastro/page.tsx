@@ -37,7 +37,8 @@ export default function RegisterPage() {
         throw new Error(data.error || 'Erro ao criar conta');
       }
 
-      router.push('/');
+      const redirectPath = data.user?.role === 'ADMIN' ? '/admin' : '/minha-conta';
+      router.push(redirectPath);
       router.refresh();
     } catch (err: any) {
       setError(err.message);
@@ -54,7 +55,7 @@ export default function RegisterPage() {
         </h2>
         <p className="mt-2 text-center text-sm text-neutral-600">
           Já tem uma conta?{' '}
-          <Link href="/login" className="font-medium text-blue-600 hover:text-blue-500 transition-colors">
+          <Link href="/login" className="font-medium text-orange-600 hover:text-orange-500 transition-colors">
             Faça login aqui
           </Link>
         </p>
@@ -78,7 +79,7 @@ export default function RegisterPage() {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2.5 border border-neutral-300 rounded-xl shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all"
+                  className="appearance-none block w-full px-3 py-2.5 border border-neutral-300 rounded-xl shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 sm:text-sm transition-all"
                 />
               </div>
             </div>
@@ -93,7 +94,7 @@ export default function RegisterPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2.5 border border-neutral-300 rounded-xl shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all"
+                  className="appearance-none block w-full px-3 py-2.5 border border-neutral-300 rounded-xl shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 sm:text-sm transition-all"
                 />
               </div>
             </div>
@@ -108,7 +109,7 @@ export default function RegisterPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2.5 border border-neutral-300 rounded-xl shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all"
+                  className="appearance-none block w-full px-3 py-2.5 border border-neutral-300 rounded-xl shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 sm:text-sm transition-all"
                 />
               </div>
             </div>
@@ -120,10 +121,10 @@ export default function RegisterPage() {
                 type="checkbox"
                 checked={terms}
                 onChange={(e) => setTerms(e.target.checked)}
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-neutral-300 rounded"
+                className="h-4 w-4 text-orange-600 focus:ring-orange-500 border-neutral-300 rounded"
               />
               <label htmlFor="terms" className="ml-2 block text-sm text-neutral-700">
-                Li e concordo com os <a href="#" className="text-blue-600 hover:underline">Termos de Uso</a> e a <a href="#" className="text-blue-600 hover:underline">Política de Privacidade</a>.
+                Li e concordo com os <Link href="/termos" className="text-orange-600 hover:underline">Termos de Uso</Link> e a <Link href="/privacidade" className="text-orange-600 hover:underline">Política de Privacidade</Link>.
               </label>
             </div>
 
@@ -131,7 +132,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-70"
+                className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors disabled:opacity-70"
               >
                 {loading ? 'Criando conta...' : 'Criar conta'}
               </button>

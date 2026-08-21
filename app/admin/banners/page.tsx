@@ -1,5 +1,6 @@
 import prisma from '@/lib/prisma';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Plus, Trash2, Edit } from 'lucide-react';
 import { revalidatePath } from 'next/cache';
 
@@ -29,9 +30,9 @@ export default async function AdminBanners() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-xl font-bold text-slate-900">Gerenciar Banners</h1>
-        <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase transition-colors flex items-center gap-2">
+        <Link href="/admin/banners/novo" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-xs font-bold uppercase transition-colors flex items-center gap-2">
           <Plus size={16} /> Novo Banner
-        </button>
+        </Link>
       </div>
       
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
@@ -74,9 +75,9 @@ export default async function AdminBanners() {
                   </td>
                   <td className="px-4 py-3 text-right whitespace-nowrap">
                     <div className="flex justify-end gap-2">
-                      <button className="text-slate-400 hover:text-orange-500 transition-colors p-1" title="Editar">
+                      <Link href={`/admin/banners/${banner.id}/editar`} className="text-slate-400 hover:text-orange-500 transition-colors p-1" title="Editar">
                         <Edit size={16}/>
-                      </button>
+                      </Link>
                       <form action={deleteBanner}>
                         <input type="hidden" name="id" value={banner.id} />
                         <button type="submit" className="text-slate-400 hover:text-red-500 transition-colors p-1" title="Excluir">

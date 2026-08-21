@@ -1,6 +1,8 @@
 import { getSession } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { ShieldAlert } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,7 +24,14 @@ export default async function AccountPage() {
   return (
     <div className="flex-1 bg-neutral-50 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-black text-neutral-900 mb-8">Minha Conta</h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-black text-neutral-900">Minha Conta</h1>
+          {user.role === 'ADMIN' && (
+            <Link href="/admin" className="flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-slate-800 transition-colors">
+              <ShieldAlert size={16} /> Painel Admin
+            </Link>
+          )}
+        </div>
         
         <div className="bg-white rounded-2xl p-8 border border-neutral-200 shadow-sm">
           <div className="space-y-6">
