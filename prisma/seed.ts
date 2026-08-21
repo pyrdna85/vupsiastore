@@ -7,8 +7,16 @@ async function main() {
   console.log('Iniciando seed...');
 
   // 1. Criar administrador
-  const adminEmail = process.env.ADMIN_EMAIL || 'admin@vupsia.com.br';
-  const adminPassword = process.env.ADMIN_PASSWORD || '123456';
+const adminEmail = process.env.ADMIN_EMAIL;
+const adminPassword = process.env.ADMIN_PASSWORD;
+
+if (!adminEmail) {
+  throw new Error('ADMIN_EMAIL não configurado.');
+}
+
+if (!adminPassword) {
+  throw new Error('ADMIN_PASSWORD não configurado.');
+}
   
   const existingAdmin = await prisma.user.findUnique({
     where: { email: adminEmail }
