@@ -103,14 +103,15 @@ export default async function ProductPage({
                 )}
               </div>
 
-              <Link 
+              <a 
                 href={`/go/${product.id}`}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold py-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 hover:shadow-xl hover:-translate-y-0.5"
               >
                 Comprar Agora
                 <ExternalLink size={20} />
-              </Link>
+              </a>
               <p className="text-xs text-neutral-500 text-center mt-4">
                 Ao clicar, você será redirecionado para a loja parceira de forma segura.
               </p>
