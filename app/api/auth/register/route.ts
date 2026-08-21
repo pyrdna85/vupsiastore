@@ -12,10 +12,7 @@ export async function POST(req: NextRequest) {
     }
 
     if (password.length < 8) {
-      return NextResponse.json(
-        { error: 'A senha deve ter pelo menos 8 caracteres.' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'A senha deve ter pelo menos 8 caracteres' }, { status: 400 });
     }
 
     const existingUser = await prisma.user.findUnique({

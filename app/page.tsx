@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import prisma from '@/lib/prisma';
 import { ProductCard } from '@/components/products/ProductCard';
-import * as LucideIcons from 'lucide-react';
+import { LayoutGrid } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 60; // Revalidate every minute
@@ -35,7 +35,7 @@ export default async function Home() {
       <nav className="bg-white border-b border-slate-100 px-4 sm:px-6 py-2 flex gap-6 shrink-0 overflow-x-auto">
         <div className="max-w-7xl mx-auto flex items-center gap-6 w-full">
           <div className="flex items-center gap-2 px-3 py-1 bg-orange-50 text-orange-600 rounded-md text-xs font-bold whitespace-nowrap shrink-0">
-            <LucideIcons.LayoutGrid size={14} />
+            <LayoutGrid size={14} />
             Categorias
           </div>
           <div className="flex items-center gap-5 text-xs font-medium text-slate-600 whitespace-nowrap overflow-x-auto no-scrollbar">

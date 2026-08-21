@@ -18,7 +18,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getSession();
-
+  
   return (
     <html lang="pt-BR">
       <body className={`${inter.className} bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans`} suppressHydrationWarning>

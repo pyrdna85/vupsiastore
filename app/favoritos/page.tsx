@@ -13,7 +13,7 @@ export default async function FavoritesPage() {
   }
 
   const favorites = await prisma.favorite.findMany({
-    where: { userId: session.id },
+    where: { userId: session.userId },
     include: {
       product: true
     },

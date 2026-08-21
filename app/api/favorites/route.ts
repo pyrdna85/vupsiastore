@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     const existing = await prisma.favorite.findUnique({
       where: {
         userId_productId: {
-          userId: session.id,
+          userId: session.userId,
           productId,
         }
       }
@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
       // Add
       await prisma.favorite.create({
         data: {
-          userId: session.id,
+          userId: session.userId,
           productId,
         }
       });
